@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+
+public class Main
+{
+	public static void main(String[] args)
+	{
+		String str = "[{(<>)}]";	
+		System.out.println("RESULT : " + balanced_parenthese(str));
+  }
+
+    public static boolean balanced_parenthese(String text)
+    {
+        char[] string = text.toCharArray();        
+        Stack<Character> stack = new Stack<>();
+        
+        for(int i=0;i<text.length();i++)
+            if(string[i] == '{' || string[i] == '[' || string[i] == '(' || string[i] == '<')
+                stack.push(string[i]);
+                
+        for(int i=0;i<text.length();i++)
+            if(string[i] == '}' || string[i] == ']' || string[i] == ')' || string[i] == '>')
+                stack.pop();
+
+        if(stack.isEmpty())
+            return true;            
+        else
+            return false;          
+    }
+  }
